@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-deployment-hook
+  labels:
+    app: github-deployment-hook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-deployment-hook
+  template:
+    metadata:
+      labels:
+        app: github-deployment-hook
+    spec:
+      containers:
+      - name: github-deployment-hook
+        image: github-deployment-hook:latest
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo 'Hello, Kubernetes!'; sleep 10; done"]

@@ -106,4 +106,3 @@ spec:
 | GITHUB_API_URL   | The GitHub API URL (optional, defaults to "https://api.github.com").        | "https://api.github.com"       |
 | DEPLOYMENT_STATE | The state of the deployment (e.g., "error", "failure", "inactive"           |                                |
 |                  | , "in_progress", "queued", "pending", "success"). |                         |                                |
-# github-deployment-hook

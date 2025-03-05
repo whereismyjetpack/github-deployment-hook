@@ -1,0 +1,6 @@
+#!/bin/bash
+export ENVIRONMENT_NAME=development
+export GITHUB_REPO=whereismyjetpack/github-deployment-hook
+export GITHUB_REF=c5ed9b6b80c0e14341d1241520306252c5a50b11
+export GITHUB_TOKEN=
+export DEPLOYMENT_STATE=success

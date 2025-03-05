@@ -1,0 +1,6 @@
+
+
+# Ignore DevSpace cache and log folder
+.devspace/
+.envrc
+__pycache__
