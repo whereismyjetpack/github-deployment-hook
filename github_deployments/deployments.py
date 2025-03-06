@@ -28,8 +28,7 @@ class GithubDeployment:
 
         return {"status": "success"}
 
-    def get_deployment_from_ref(self):
-        ref = self.config.github_ref
+    def get_deployment_by_ref_and_environment(self):
         resp = requests.get(
             f"{self.config.github_api_url}/repos/{self.config.github_repo}/deployments",
             headers=self.headers,
@@ -40,14 +39,14 @@ class GithubDeployment:
 
         deployments = resp.json()
         for deployment in deployments:
-            if deployment["ref"] == ref:
+            if deployment["ref"] == self.config.github_ref and deployment["environment"] == self.config.environment_name:
                 logging.info(f"Found deployment: {deployment['id']}")
                 return deployment["id"]
 
         return None
 
     def update_deployment(self):
-        deployment_id = self.get_deployment_from_ref()
+        deployment_id = self.get_deployment_by_ref_and_environment()
         if not deployment_id:
             logging.info("Existing Deployment not found. Creating a new deployment.")
             deployment_id = self.create_deployment()
