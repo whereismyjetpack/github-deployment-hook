@@ -8,6 +8,9 @@ class Config(BaseSettings):
     github_token: str
     github_repo: str
     environment_name: str
+    environment_url: str = ''
+    description: str = ''
+    log_url: str = ''
     github_ref: str
     github_api_url: str = "https://api.github.com"
     deployment_state: str

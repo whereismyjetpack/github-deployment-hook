@@ -56,6 +56,13 @@ class GithubDeployment:
             "state": self.config.deployment_state,
         }
 
+        ## Apply optional fields
+        data.update({"environment_url": self.config.environment_url} if self.config.environment_url else {})
+        data.update({"log_url": self.config.log_url} if self.config.log_url else {})
+        data.update({"description": self.config.description} if self.config.description else {})
+        logging.info(f"Updating deployment with data: {data}")
+
+
         resp = requests.post(
             f"{self.config.github_api_url}/repos/{self.config.github_repo}/deployments/{deployment_id}/statuses",
             headers=self.headers,

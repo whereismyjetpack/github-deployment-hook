@@ -3,4 +3,4 @@ from github_deployments import GithubDeployment
 
 gh = GithubDeployment()
 
-gh.update_deployment()
+gh.delete_deployment()
