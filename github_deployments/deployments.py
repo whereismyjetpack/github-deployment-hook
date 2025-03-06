@@ -28,7 +28,7 @@ class GithubDeployment:
 
         return {"status": "success"}
 
-    def get_deployment_from_ref_and_name(self):
+    def get_deployment_by_ref_and_environment(self):
         resp = requests.get(
             f"{self.config.github_api_url}/repos/{self.config.github_repo}/deployments",
             headers=self.headers,
@@ -46,7 +46,7 @@ class GithubDeployment:
         return None
 
     def update_deployment(self):
-        deployment_id = self.get_deployment_from_ref_and_name()
+        deployment_id = self.get_deployment_by_ref_and_environment()
         if not deployment_id:
             logging.info("Existing Deployment not found. Creating a new deployment.")
             deployment_id = self.create_deployment()
